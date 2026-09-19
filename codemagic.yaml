@@ -2,9 +2,9 @@ workflows:
   android-workflow:
     name: Android APK Build
     max_build_duration: 30
-    instance_type: mac_mini_m1
+    instance_type: linux_x2
     scripts:
-      - name: Extract zip and build APK
+      - name: Extract and build
         script: |
           if [ -f calorie-lens.zip ]; then
             unzip -o calorie-lens.zip
@@ -12,6 +12,9 @@ workflows:
               cp -rf calorie-lens/* .
             fi
           fi
-          gradle assembleDebug --stacktrace
+          touch local.properties
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          chmod +x gradlew || true
+          ./gradlew assembleDebug --no-daemon
     artifacts:
       - app/build/outputs/apk/**/*.apk
