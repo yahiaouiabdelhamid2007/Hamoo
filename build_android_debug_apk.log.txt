@@ -1,6 +1,0 @@
-chmod: gradlew: No such file or directory
-/var/folders/w2/rrf5p87d1bbfyphxc7jdnyvh0000gn/T/build_script_2_1_97gljjry: line 4: ./gradlew: No such file or directory
-
-
-Build failed :|
-Step 2 script `Build Android Debug APK` exited with status code 127
