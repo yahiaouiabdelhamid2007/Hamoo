@@ -8,7 +8,10 @@ workflows:
         script: |
           if [ -f calorie-lens.zip ]; then
             unzip -o calorie-lens.zip
+            if [ -d calorie-lens ]; then
+              cp -rf calorie-lens/* .
+            fi
           fi
-          gradle assembleDebug
+          gradle assembleDebug --stacktrace
     artifacts:
       - app/build/outputs/apk/**/*.apk
